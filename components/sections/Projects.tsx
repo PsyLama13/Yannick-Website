@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 import Link from 'next/link'
+import SectionBackground from '@/components/ui/SectionBackground'
+import SectionHeader from '@/components/ui/SectionHeader'
 
 const projects = [
   {
@@ -47,23 +49,14 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 overflow-hidden min-h-screen" style={{paddingLeft: '150px'}}>
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-tl from-orange-500/28 via-background to-background" />
+    <section id="projects" className="relative py-24 overflow-hidden min-h-screen pl-[150px]">
+      <SectionBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
-          <p className="text-xl text-muted max-w-3xl mx-auto">
-            A showcase of my work in backend development, clean code, and full-stack applications
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="My Projects"
+          description="A showcase of my work in backend development, clean code, and full-stack applications"
+        />
 
         {/* Featured Projects */}
         <div className="mb-12">

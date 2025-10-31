@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import SectionBackground from '@/components/ui/SectionBackground'
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient - minimalist and subtle */}
-      <div className="absolute inset-0 bg-gradient-to-tl from-orange-500/28 via-background to-background" />
+      <SectionBackground />
 
       {/* Minimalist background elements */}
       <div className="absolute inset-0 overflow-hidden">

@@ -2,10 +2,9 @@
 
 import { useState } from 'react'
 import { HiMenu, HiX, HiHome, HiUser, HiBriefcase, HiChatAlt2, HiMail } from 'react-icons/hi'
-import { SiGithub, SiLinkedin, SiXing } from 'react-icons/si'
-import { MdEmail, MdWork } from 'react-icons/md'
 import { FaCode } from 'react-icons/fa'
 import Link from 'next/link'
+import { SOCIAL_LINKS } from '@/lib/constants/socialLinks'
 
 const navItems = [
   { name: 'Home', href: '/', icon: HiHome },
@@ -14,29 +13,6 @@ const navItems = [
   { name: 'Career', href: '/experience', icon: HiBriefcase },
   { name: 'Talks', href: '/talks', icon: HiChatAlt2 },
   { name: 'Contact', href: '/contact', icon: HiMail },
-]
-
-const socialLinks = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/PsyLama13',
-    icon: SiGithub,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/yannick-zutter-288655199',
-    icon: SiLinkedin,
-  },
-  {
-    name: 'Xing',
-    href: 'https://www.xing.com/profile/Yannick_Zutter',
-    icon: SiXing,
-  },
-  {
-    name: 'Email',
-    href: 'mailto:y.zutter93@gmail.com',
-    icon: MdEmail,
-  },
 ]
 
 export default function Navigation() {
@@ -91,7 +67,7 @@ export default function Navigation() {
         {/* Social Links */}
         <div className="p-6 border-t border-card/50 space-y-4">
           <div className={`flex justify-center transition-all duration-300 ${isSidebarHovered ? 'gap-3' : 'gap-2 flex-col items-center'}`}>
-            {socialLinks.map((link) => {
+            {SOCIAL_LINKS.map((link) => {
               const Icon = link.icon
               return (
                 <a
@@ -162,7 +138,7 @@ export default function Navigation() {
               {/* Mobile Social Links */}
               <div className="pt-4 border-t border-card/50">
                 <div className="flex justify-center gap-3 mb-4">
-                  {socialLinks.map((link) => {
+                  {SOCIAL_LINKS.map((link) => {
                     const Icon = link.icon
                     return (
                       <a
@@ -177,14 +153,6 @@ export default function Navigation() {
                       </a>
                     )
                   })}
-                </div>
-                <div className="text-center">
-                  <Link
-                    href="/impressum"
-                    className="text-xs text-primary hover:text-primary/80 underline"
-                  >
-                    Impressum
-                  </Link>
                 </div>
               </div>
             </div>

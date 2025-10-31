@@ -1,9 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Github, Linkedin, MapPin, ExternalLink } from 'lucide-react'
+import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
 import { SiXing } from 'react-icons/si'
 import Link from 'next/link'
+import SectionBackground from '@/components/ui/SectionBackground'
+import SectionHeader from '@/components/ui/SectionHeader'
 
 const contactInfo = [
   {
@@ -44,23 +46,14 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-24 overflow-hidden min-h-screen" style={{paddingLeft: '150px'}}>
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-tl from-orange-500/28 via-background to-background" />
+    <section id="contact" className="relative py-24 overflow-hidden min-h-screen pl-[150px]">
+      <SectionBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-xl text-muted max-w-3xl mx-auto">
-            Have a project in mind or just want to chat? Feel free to reach out!
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Get In Touch"
+          description="Have a project in mind or just want to chat? Feel free to reach out!"
+        />
 
         <div className="max-w-3xl mx-auto">
           {/* Contact Information */}

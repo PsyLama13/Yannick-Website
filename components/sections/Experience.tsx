@@ -2,6 +2,8 @@
 
 import {motion} from 'framer-motion'
 import {Calendar, MapPin} from 'lucide-react'
+import SectionBackground from '@/components/ui/SectionBackground'
+import SectionHeader from '@/components/ui/SectionHeader'
 
 const timelineItems = [
     {
@@ -54,32 +56,23 @@ const timelineItems = [
 
 export default function Experience() {
     return (
-        <section className="relative py-24 overflow-hidden min-h-screen" style={{paddingLeft: '150px'}}>
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-tl from-orange-500/33 via-background to-background"/>
+        <section className="relative py-24 overflow-hidden min-h-screen pl-[150px]">
+            <SectionBackground opacity={33} />
 
             <div className="relative z-10 px-6 sm:px-8 lg:px-12">
-                <motion.div
-                    initial={{opacity: 0, y: 20}}
-                    whileInView={{opacity: 1, y: 0}}
-                    viewport={{once: true}}
-                    transition={{duration: 0.6}}
-                    className="text-center mb-16 max-w-6xl mx-auto"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold" style={{marginBottom: '10px'}}>
-                        Experience & Education</h2>
-                    <p className="text-xl text-muted max-w-3xl mx-auto" style={{marginBottom: '20px'}}>
-                        My professional and academic journey
-                    </p>
-                </motion.div>
+                <SectionHeader
+                    title="Experience & Education"
+                    description="My professional and academic journey"
+                    className="max-w-6xl mx-auto"
+                />
 
                 {/* Timeline */}
-                <div className="relative" style={{marginLeft: '200px', minHeight: '100vh'}}>
+                <div className="relative ml-[200px] min-h-screen">
                     {/* Timeline line */}
-                    <div className="hidden md:block absolute left-0 w-0.5 bg-primary/20" style={{height: '100%', minHeight: '100vh'}}/>
+                    <div className="hidden md:block absolute left-0 w-0.5 bg-primary/20 h-full min-h-screen"/>
 
                     {/* Timeline items */}
-                    <div style={{paddingLeft: '75px', paddingRight: '200px'}}>
+                    <div className="pl-[75px] pr-[200px]">
                         {timelineItems.map((item, index) => (
                             <motion.div
                                 key={index}
@@ -87,18 +80,15 @@ export default function Experience() {
                                 whileInView={{opacity: 1, y: 0}}
                                 viewport={{once: true}}
                                 transition={{duration: 0.6, delay: index * 0.1}}
-                                className="relative w-full"
-                                style={{marginBottom: '50px'}}
+                                className="relative w-full mb-[50px]"
                             >
                                 {/* Timeline dot */}
                                 <div
-                                    className="hidden md:block absolute top-8 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"
-                                    style={{left: '-62px'}}/>
+                                    className="hidden md:block absolute top-8 w-4 h-4 bg-primary rounded-full border-4 border-background z-10 -left-[62px]"/>
 
                                 {/* Content */}
                                 <div
-                                    className="bg-card/50 backdrop-blur-sm rounded-xl border border-primary/20 hover:border-primary/40 transition-all duration-[500ms] overflow-hidden w-1/2 hover:w-full group"
-                                    style={{padding: '10px'}}
+                                    className="bg-card/50 backdrop-blur-sm rounded-xl border border-primary/20 hover:border-primary/40 transition-all duration-[500ms] overflow-hidden w-1/2 hover:w-full group p-[10px]"
                                 >
                                     {/* Header */}
                                     <div className="mb-4">

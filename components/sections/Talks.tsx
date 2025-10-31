@@ -1,8 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, MapPin, Users, Video, ExternalLink, PlayCircle } from 'lucide-react'
+import { Calendar, MapPin, Users, ExternalLink, PlayCircle } from 'lucide-react'
 import Link from 'next/link'
+import SectionBackground from '@/components/ui/SectionBackground'
+import SectionHeader from '@/components/ui/SectionHeader'
 
 const upcomingTalks = [
   {
@@ -45,27 +47,17 @@ const upcomingTalks = [
   }
 ]
 
-const pastTalks: any[] = []
 
 export default function Talks() {
   return (
-    <section className="relative py-24 overflow-hidden min-h-screen" style={{paddingLeft: '150px'}}>
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-tl from-orange-500/28 via-background to-background" />
+    <section className="relative py-24 overflow-hidden min-h-screen pl-[150px]">
+      <SectionBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Talks & Presentations</h2>
-          <p className="text-xl text-muted max-w-3xl mx-auto">
-            Sharing knowledge and insights with the developer community
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Talks & Presentations"
+          description="Sharing knowledge and insights with the developer community"
+        />
 
         {/* Upcoming Talks */}
         <div className="mb-16">
@@ -161,100 +153,6 @@ export default function Talks() {
               ))}
           </div>
         </div>
-
-        {/* Past Talks */}
-        {pastTalks.length > 0 && (
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Past Talks & Workshops</h3>
-            <div className="space-y-4">
-              {pastTalks.map((talk, index) => (
-                <motion.div
-                  key={talk.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-primary/10 hover:border-primary/30 transition-all hover:scale-[1.01] group"
-                >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="mb-2">
-                        <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                          {talk.type}
-                        </span>
-                      </div>
-
-                      <h4 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                        {talk.title}
-                      </h4>
-
-                      <div className="flex flex-wrap gap-4 text-sm text-muted mb-3">
-                        <span className="font-semibold text-foreground">{talk.event}</span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {talk.date}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-4 h-4" />
-                          {talk.location}
-                        </span>
-                      </div>
-
-                      <p className="text-muted text-sm mb-3">{talk.description}</p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {talk.topics.map(topic => (
-                          <span
-                            key={topic}
-                            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
-                          >
-                            {topic}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex md:flex-col gap-4">
-                      {talk.eventUrl && (
-                        <Link
-                          href={talk.eventUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-muted hover:text-primary transition-colors text-sm"
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                          <span>Event</span>
-                        </Link>
-                      )}
-                      {talk.videoUrl && (
-                        <Link
-                          href={talk.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-muted hover:text-primary transition-colors text-sm"
-                        >
-                          <PlayCircle className="w-5 h-5" />
-                          <span>Watch</span>
-                        </Link>
-                      )}
-                      {talk.slidesUrl && (
-                        <Link
-                          href={talk.slidesUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-muted hover:text-primary transition-colors text-sm"
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                          <span>Slides</span>
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* CTA Section */}
         <motion.div
